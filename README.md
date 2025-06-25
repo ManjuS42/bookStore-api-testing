@@ -2,9 +2,7 @@
 
 ## 📖 Overview
 
-This project delivers an automated testing framework for validating the Bookstore API using industry-standard tools and practices.  
-Built with Java, Cucumber, and RestAssured, it enables comprehensive validation of API operations such as user authentication and book management.  
-The framework supports CI/CD integration with Jenkins and generates detailed **Cucumber HTML reports**.
+This project delivers an automated testing framework for validating the Bookstore API using industry-standard tools and practices. Built with Java, Cucumber, and RestAssured, it enables comprehensive validation of API operations such as user authentication and book management. The framework supports CI/CD integration with Jenkins and generates detailed Cucumber HTML reports.
 
 ---
 
@@ -47,23 +45,8 @@ The framework supports CI/CD integration with Jenkins and generates detailed **C
 ## 📂 Project Structure
 
 
-bookStore-api-testing/
-├── src/
-│   ├── main/java/
-│   │   ├── baseController/        
-│   │   ├── constants/           
-│   │   ├── data/                  
-│   │   └── utils/                
-│   └── test/java/
-│       ├── hooks/                 
-│       ├── runner/                
-│       ├── steps/                 
-│       └── resources/
-│           ├── features/          
-│           └── \*.properties      
-├── Jenkinsfile                  
-├── pom.xml                       
-└── reports/                      
+               
+          
 
 
 ---
