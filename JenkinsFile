@@ -1,0 +1,43 @@
+pipeline {
+  agent any
+
+  tools {
+    maven 'Maven 3.6.3'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git url: 'https://github.com/ManjuSrinivasan04/bookStore-api-testing.git', branch: 'master'
+      }
+    }
+
+    stage('Build and Run Tests') {
+      steps {
+        sh 'mvn clean test'
+      }
+    }
+
+    stage('Generate Cucumber Report') {
+      steps {
+        sh 'mvn verify'
+      }
+    }
+
+    stage('Archive Reports') {
+      steps {
+        archiveArtifacts artifacts: 'target/cucumber-report/**', fingerprint: true
+
+        publishHTML([
+          allowMissing: false,
+          alwaysLinkToLastBuild: true,
+          keepAll: true,
+          reportDir: 'target/cucumber-report',
+          reportFiles: 'cucumber-html-report.html',
+          reportName: 'Cucumber Test Report'
+        ])
+
+      }
+    }
+  }
+}
