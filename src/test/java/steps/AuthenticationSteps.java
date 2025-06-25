@@ -150,8 +150,6 @@ public class AuthenticationSteps {
 
   @When("the user logs in with missing parameters")
   public void theUserLogsInWithMissingParameters() {
-    //    bookStoreInteractionData.setUserEmail(null);
-    //    bookStoreInteractionData.setUserPassword(null);
     Response signUpResponse = AuthenticationController.userLogin(null, null);
     bookStoreInteractionData.setAuthenticationResult(signUpResponse);
   }

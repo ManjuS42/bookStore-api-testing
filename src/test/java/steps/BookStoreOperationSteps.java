@@ -45,7 +45,7 @@ public class BookStoreOperationSteps {
 
   @When("the client creates a new book")
   public void theClientCreatesANewBook() {
-    bookStoreInteractionData.setBookAdditionResult(BookStoreController.createBook(generateBookPayload,
+    bookStoreInteractionData.setBookAdditionResult(BookStoreController.createNewBook(generateBookPayload,
         "Bearer " + bookStoreInteractionData.getAuthToken()));
   }
 
@@ -103,7 +103,7 @@ public class BookStoreOperationSteps {
         throw new IllegalArgumentException("Unsupported field: " + name);
     }
 
-    bookStoreInteractionData.setBookUpdateResult(BookStoreController.editTheBook(generateBookPayload,
+    bookStoreInteractionData.setBookUpdateResult(BookStoreController.updateOldBook(generateBookPayload,
         "Bearer " + bookStoreInteractionData.getAuthToken()));
 
   }
@@ -121,7 +121,7 @@ public class BookStoreOperationSteps {
 
   @When("the client retrieves the book by its id")
   public void theClientRetrievesTheBookByItsId() {
-    bookStoreInteractionData.setBookLookupByIdResult(BookStoreController.getBookDetailsById(generateBookPayload,
+    bookStoreInteractionData.setBookLookupByIdResult(BookStoreController.fetchBookDetailsById(generateBookPayload,
         "Bearer " + bookStoreInteractionData.getAuthToken()));
 
   }
@@ -151,7 +151,7 @@ public class BookStoreOperationSteps {
 
   @When("the client deletes the book")
   public void theClientDeletesTheBook() {
-    bookStoreInteractionData.setBookRemovalResult(BookStoreController.deleteTheBookById(generateBookPayload.get(
+    bookStoreInteractionData.setBookRemovalResult(BookStoreController.deleteBookByBookID(generateBookPayload.get(
         "createdBookId").toString(), "Bearer " + bookStoreInteractionData.getAuthToken()));
 
   }
@@ -177,7 +177,7 @@ public class BookStoreOperationSteps {
 
   @When("the client deletes the same book again")
   public void theClientDeletesTheSameBookAgain() {
-    bookStoreInteractionData.setBookRemovalResult(BookStoreController.deleteTheBookById(generateBookPayload.get(
+    bookStoreInteractionData.setBookRemovalResult(BookStoreController.deleteBookByBookID(generateBookPayload.get(
         "createdBookId").toString(), "Bearer " + bookStoreInteractionData.getAuthToken()));
   }
 
@@ -203,7 +203,7 @@ public class BookStoreOperationSteps {
       default:
         throw new IllegalArgumentException("Unsupported field: " + field);
     }
-    bookStoreInteractionData.setBookUpdateResult(BookStoreController.editTheBook(generateBookPayload,
+    bookStoreInteractionData.setBookUpdateResult(BookStoreController.updateOldBook(generateBookPayload,
         "Bearer " + bookStoreInteractionData.getAuthToken()));
   }
 
@@ -268,7 +268,7 @@ public class BookStoreOperationSteps {
       book.put("published_year", uid);
       book.put("book_summary", "Summary for the book " + uid);
 
-      bookStoreInteractionData.setBookAdditionResult(BookStoreController.createBook(book,
+      bookStoreInteractionData.setBookAdditionResult(BookStoreController.createNewBook(book,
           "Bearer " + bookStoreInteractionData.getAuthToken()));
 
       int id = bookStoreInteractionData.getBookAdditionResult().getBody().jsonPath().get("id");
@@ -279,7 +279,7 @@ public class BookStoreOperationSteps {
 
   @When("the client fetches the complete book list")
   public void theClientFetchesTheCompleteBookList() {
-    bookStoreInteractionData.setAllBooksResponseList(BookStoreController.getAllBooks(
+    bookStoreInteractionData.setAllBooksResponseList(BookStoreController.fetchAllBooksData(
         "Bearer " + bookStoreInteractionData.getAuthToken()));
   }
 
@@ -301,10 +301,6 @@ public class BookStoreOperationSteps {
     }
   }
 
-  @Given("the client has created a book")
-  public void theClientHasCreatedABook() {
-  }
-
   @Then("the response status should be {int} and the error message should mention {string}")
   public void theResponseStatusShouldBeAndTheErrorMessageShouldMention(int statusCode, String message) {
     Assert.assertEquals(bookStoreInteractionData.getBookLookupByIdResult().getStatusCode(), statusCode);
@@ -314,7 +310,7 @@ public class BookStoreOperationSteps {
 
   @When("the client requests GET book by invalid ID")
   public void theClientRequestsGETBookByInvalidID() {
-    bookStoreInteractionData.setBookLookupByIdResult(BookStoreController.getBookDetailsByInvalidId(generateBookPayload,
+    bookStoreInteractionData.setBookLookupByIdResult(BookStoreController.fetchBookDetailsByInvalidBookId(generateBookPayload,
         "Bearer " + bookStoreInteractionData.getAuthToken()));
   }
 }

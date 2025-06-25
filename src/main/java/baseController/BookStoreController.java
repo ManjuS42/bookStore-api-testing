@@ -19,14 +19,22 @@ public final class BookStoreController {
         .contentType(ContentType.JSON);
   }
 
-  public static Response createBook(HashMap<String, Object> generateBookPayload, String accessToken) {
+  public static Response createNewBook(HashMap<String, Object> generateBookPayload, String accessToken) {
 
-    return request(accessToken).body(generateBookPayload).when().post(ApiEndPoints.CREATE_BOOK_ENDPOINT).then().log().all().extract().response();
+    return request(accessToken).body(generateBookPayload)
+        .when()
+        .post(ApiEndPoints.CREATE_BOOK_ENDPOINT)
+        .then()
+        .log()
+        .all()
+        .extract()
+        .response();
   }
 
-  public static Response editTheBook(HashMap<String, Object> generateBookPayload, String accessToken) {
+  public static Response updateOldBook(HashMap<String, Object> generateBookPayload, String accessToken) {
 
-    return request(accessToken).body(generateBookPayload).pathParam("book_id", generateBookPayload.get("createdBookId"))
+    return request(accessToken).body(generateBookPayload)
+        .pathParam("book_id", generateBookPayload.get("createdBookId"))
         .when()
         .put(ApiEndPoints.FIND_BOOK_BY_ID_ENDPOINT)
         .then()
@@ -36,11 +44,11 @@ public final class BookStoreController {
         .response();
   }
 
-  public static Response getBookDetailsById(HashMap<String, Object> generateBookPayload, String accessToken) {
+  public static Response fetchBookDetailsById(HashMap<String, Object> generateBookPayload, String accessToken) {
 
 
-
-    return request(accessToken).body(generateBookPayload).pathParam("book_id", generateBookPayload.get("createdBookId"))
+    return request(accessToken).body(generateBookPayload)
+        .pathParam("book_id", generateBookPayload.get("createdBookId"))
         .header("Authorization", accessToken)
         .when()
         .get(ApiEndPoints.FIND_BOOK_BY_ID_ENDPOINT)
@@ -51,7 +59,7 @@ public final class BookStoreController {
         .response();
   }
 
-  public static Response getAllBooks(String accessToken) {
+  public static Response fetchAllBooksData(String accessToken) {
 
     return request(accessToken).header("Authorization", accessToken)
         .when()
@@ -64,7 +72,7 @@ public final class BookStoreController {
   }
 
 
-  public static Response deleteTheBookById(String id, String accessToken) {
+  public static Response deleteBookByBookID(String id, String accessToken) {
 
     return request(accessToken).pathParam("book_id", id)
         .header("Authorization", accessToken)
@@ -77,9 +85,11 @@ public final class BookStoreController {
         .response();
   }
 
-  public static Response getBookDetailsByInvalidId(HashMap<String, Object> generateBookPayload, String accessToken) {
+  public static Response fetchBookDetailsByInvalidBookId(HashMap<String, Object> generateBookPayload,
+      String accessToken) {
 
-    return request(accessToken).body(generateBookPayload).pathParam("book_id", "randomid")
+    return request(accessToken).body(generateBookPayload)
+        .pathParam("book_id", "randomid")
         .header("Authorization", accessToken)
         .when()
         .get(ApiEndPoints.FIND_BOOK_BY_ID_ENDPOINT)
