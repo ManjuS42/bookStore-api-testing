@@ -94,10 +94,10 @@ This project delivers an automated testing framework for validating the Bookstor
 1. Clone the repository
    git clone https://github.com/ManjuSrinivasan04/bookStore-api-testing.git
 2. Navigate to the project directory
-_cd bookStore-api-testing_
+   _cd bookStore-api-testing_
 3. Run tests and generate the report
-`mvn clean verify
-`
+   `mvn clean verify
+   `
 ---
 
 ### View Report
@@ -161,8 +161,8 @@ Install these from Manage Jenkins → Plugins → Available:
    }
 `
 4. Jenkinsfile for Bookstore-QA-Automation
-`   https://github.com/ManjuSrinivasan04/bookStore-api-testing/blob/ddfece5485cc227ed231db38a46a689387077d44/JenkinsFile
-`
+   `   https://github.com/ManjuSrinivasan04/bookStore-api-testing/blob/ddfece5485cc227ed231db38a46a689387077d44/JenkinsFile
+   `
 
 
 ---
@@ -171,19 +171,19 @@ Install these from Manage Jenkins → Plugins → Available:
 
 ---
 1. Start Jenkins Locally
-   
-   `java -jar jenkins.war`
-Login at: http://localhost:8080
 
-2. Create 2 Jenkins Pipeline Jobs for Dev Repo and Bookstore-QA-Automation repo 
-3. Configure the repo in their respective jobs and also make the configuration as necessary 
-4. In Dev repo Webhooks - Need to add payload url for triggering the Dev Job whenever dev commits the code 
+   `java -jar jenkins.war`
+   Login at: http://localhost:8080
+
+2. Create 2 Jenkins Pipeline Jobs for Dev Repo and Bookstore-QA-Automation repo
+3. Configure the repo in their respective jobs and also make the configuration as necessary
+4. In Dev repo Webhooks - Need to add payload url for triggering the Dev Job whenever dev commits the code
 5. Since github can't access your local , run ngrok command to let public access for your local server
-`ngrok http http://localhost:8080
-`
-6. It will generate the url , use that as payload url along with repo name 
-`(eg : https://gitUserName:gitPassword@ngrokServerProvided/job/DevRepo/build )//Replace with dev repo name
-`
+   `ngrok http http://localhost:8080
+   `
+6. It will generate the url , use that as payload url along with repo name
+   `(eg : https://gitUserName:gitPassword@ngrokServerProvided/job/DevRepo/build )//Replace with dev repo name
+   `
 ---
 ### Now Test It
 
