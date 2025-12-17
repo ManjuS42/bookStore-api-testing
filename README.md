@@ -204,3 +204,14 @@ Install these from Manage Jenkins → Plugins → Available:
 
 `target/cucumber-report/cucumber-html-report.html
 `
+
+---
+
+## 🧑‍💻 Author
+
+Automation Framework developed by **Manju S**
+
+| Senior Software Development Engineer in Test (SDET) |
+
+| 🔗 GitHub: https://github.com/ManjuS42 |
+
