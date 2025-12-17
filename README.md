@@ -209,7 +209,7 @@ Install these from Manage Jenkins → Plugins → Available:
 
 ## 🧑‍💻 Author
 
-Automation Framework developed by **Manju S**
+Automation developed by **Manju S**
 
 | Senior Software Development Engineer in Test (SDET) |
 
